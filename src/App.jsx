@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
+import { QRCodeSVG } from "qrcode.react";
 import SUBJ from "./subjects";
 import "./App.css";
 
@@ -173,6 +174,7 @@ export default function App() {
           <div className="card c">
             <small>{t("open")} {location.host}</small>
             <div className="pin">{pin}</div>
+            <div className="qr"><QRCodeSVG value={`${location.origin}/?pin=${pin}`} size={200} /></div>
             <p>{location.origin}/?pin={pin}</p>
             <h3>{t("lobby")} ({pl.length})</h3>
             <div className="pl">{pl.map((p, i) => <span className="pp" key={i}>{p.a} {p.n}</span>)}</div>
